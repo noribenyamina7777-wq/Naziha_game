@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صندوق أسرار نزيهة ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Tahoma,Arial,sans-serif;color:#fff;background:radial-gradient(circle at 50% 20%,#4b1d5f,#13091d 55%,#05030a);overflow:hidden}
+body:before{content:"";position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:55px 55px;opacity:.13;animation:stars 18s linear infinite}@keyframes stars{to{transform:translateY(55px)}}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:18px}.box{width:min(560px,100%);min-height:650px;border:1px solid #ffffff25;border-radius:32px;background:#ffffff0b;backdrop-filter:blur(18px);box-shadow:0 30px 100px #000b;position:relative;overflow:hidden;padding:30px 22px}.screen{text-align:center;min-height:590px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;z-index:2}
+.crown{font-size:60px;filter:drop-shadow(0 0 25px #ffcb78)}h1{font-size:32px;margin:12px 0}h2{font-size:25px;margin:8px 0}p{line-height:2;font-size:16px;color:#eadff0;max-width:470px}
+.lock{font-size:100px;margin:20px;animation:pulse 2s infinite;filter:drop-shadow(0 0 35px #ff78b0)}@keyframes pulse{50%{transform:scale(1.07)}}
+.keys{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:440px}.key{border:1px solid #ffffff20;background:linear-gradient(145deg,#ffffff13,#ffffff06);color:#fff;border-radius:20px;padding:18px 8px;min-width:0;font-weight:bold;cursor:pointer;box-shadow:0 10px 30px #0005;transition:.2s}.key:hover{transform:translateY(-3px);background:#ffffff1c}.key span{display:block;font-size:30px;margin-bottom:6px}
+button.main{border:0;border-radius:18px;padding:14px 25px;background:linear-gradient(135deg,#fff,#ffd1e6);color:#301026;font-weight:bold;font-size:17px;cursor:pointer;box-shadow:0 12px 35px #0007;margin:12px}
+.note{border-right:2px solid #ff79b5;background:#ffffff08;padding:15px 18px;border-radius:14px;text-align:right;margin:14px auto;width:min(470px,100%)}.small{font-size:12px;color:#a99caf}.heart{font-size:70px;animation:pulse 1.4s infinite}
+</style>
+</head>
+<body><div class="wrap"><div class="box"><div class="screen" id="s"></div></div></div>
+<script>
+const messages=[
+["🌸","مفتاح الذكريات","هناك لحظات صغيرة لا تبدو مهمة وقت حدوثها، لكنها تصبح جميلة جدًا عندما نتذكرها. أتمنى أن تبقى لكِ دائمًا ذكريات تجعل قلبك يبتسم."],
+["💌","مفتاح الرسالة","نزيهة... أردت أن أصنع لكِ شيئًا لا يشبه رسالة عادية. ربما هي مجرد صفحة على الهاتف، لكنها تحمل وقتًا وفكرة واهتمامًا من نوري إليكِ. أتمنى أن تشعري بذلك عندما تقرئينها."],
+["🎁","مفتاح المفاجأة","المفاجآت الجميلة ليست دائمًا أشياء كبيرة. أحيانًا يكفي أن يعرف شخص ما أن هناك من فكر فيه، وحاول أن يصنع له لحظة جميلة."],
+["🌙","مفتاح الليل","لو وصلتِ إلى هنا في وقت هادئ، ارفعي عينيكِ للسماء قليلًا. وتذكري أن كل يوم جديد يحمل فرصة لشيء أجمل. أتمنى لكِ دائمًا أيامًا مطمئنة وقلبًا سعيدًا."],
+["❤️","المفتاح الأخير","وصلتِ إلى السر الحقيقي... لا يوجد كنز داخل الصندوق. الكنز هو أنكِ ابتسمتِ وأكملتِ هذه الرحلة. وهذا بالضبط ما كان يريده نوري منكِ. ❤️"]
+];
+let opened=0;
+function start(){document.getElementById("s").innerHTML=`<div class="crown">👑</div><h1>صندوق أسرار نزيهة</h1><p>هذا الصندوق صُنع لشخص واحد فقط.<br><b>ولذلك لا تحاولي فتحه إلا إذا كنتِ نزيهة. ❤️</b></p><div class="lock">🔐</div><button class="main" onclick="keys()">أريد فتح الصندوق ✨</button><p class="small">هدية رقمية من نوري</p>`}
+function keys(){document.getElementById("s").innerHTML=`<h2>اختاري مفاتيحك 🔑</h2><p>كل مفتاح يخفي شيئًا صغيرًا لكِ.<br>لكن المفتاح الأخير لن يظهر إلا بعد اكتشاف الأسرار.</p><div class="keys">${messages.map((m,i)=>`<button class="key" id="k${i}" onclick="openKey(${i})"><span>${m[0]}</span>${m[1]}</button>`).join("")}</div><p class="small">تم فتح ${opened} من 4 أسرار</p>`}
+function openKey(i){if(i===4){if(opened<4)return alert("ما زالت هناك أسرار لم تكتشفيها ❤️");final();return}
+const k=document.getElementById("k"+i);if(!k.disabled){opened++;k.disabled=true;k.style.opacity=".35"}document.getElementById("s").innerHTML=`<div class="heart">${messages[i][0]}</div><h2>${messages[i][1]}</h2><div class="note">${messages[i][2]}</div><button class="main" onclick="keys()">العودة إلى المفاتيح 🔑</button>`;spark()}
+function final(){document.getElementById("s").innerHTML=`<div class="heart">❤️</div><h1>فتح الصندوق</h1><p>نزيهة... هذه آخر رسالة.</p><div class="note">صنعت لكِ هذا الصندوق لأنني أردت أن أترك لكِ شيئًا مختلفًا. لا أحتاج منكِ شيئًا سوى أن تبتسمي الآن، وتعرفي أن هناك شخصًا اسمه <b>نوري</b> أراد أن يجعل يومك أجمل ولو للحظة. 🌷<br><br><b>أتمنى أن تبقى ابتسامتك أغلى شيء في يومك. ❤️</b></div><button class="main" onclick="start()">إغلاق الصندوق ↻</button>`;spark(35)}
+function spark(n=18){for(let i=0;i<n;i++)setTimeout(()=>{let e=document.createElement("div");e.textContent=["✨","❤️","⭐","🌸"][i%4];e.style.cssText=`position:fixed;z-index:9;left:${45+Math.random()*10}%;top:${45+Math.random()*10}%;font-size:${18+Math.random()*22}px;transition:1.3s;pointer-events:none`;document.body.appendChild(e);requestAnimationFrame(()=>{e.style.transform=`translate(${(Math.random()-.5)*300}px,${(Math.random()-.5)*350}px) scale(.2)`;e.style.opacity=0});setTimeout(()=>e.remove(),1400)},i*25)}
+start();
+</script></body></html>
