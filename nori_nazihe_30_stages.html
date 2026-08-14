@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>نوري ونزيهة — حكاية تحت السماء الزرقاء</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#06152e;font-family:Tahoma,Arial,sans-serif;color:#fff}
+#app{position:relative;width:100%;height:100%;overflow:hidden;background:#0a2b58}
+#world{position:absolute;inset:0;overflow:hidden;background:linear-gradient(#081b42 0%,#165d91 65%,#0b3559 66%,#08233f 100%);transition:background 1s}
+.stars{position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#a9dcff 1px,transparent 1.5px);background-size:85px 85px,137px 137px;background-position:10px 20px,45px 70px;opacity:.65}
+.moon{position:absolute;top:7%;right:9%;width:74px;height:74px;border-radius:50%;background:#eff9ff;box-shadow:0 0 45px #a9dcff}
+.cloud{position:absolute;width:150px;height:38px;border-radius:50px;background:#a9d9f71c;filter:blur(1px);animation:cloud 22s linear infinite}
+.c1{top:18%;left:-170px}.c2{top:29%;left:-260px;animation-duration:31s;animation-delay:-10s}
+@keyframes cloud{to{transform:translateX(130vw)}}
+.mountain{position:absolute;bottom:30%;width:0;height:0;border-left:170px solid transparent;border-right:170px solid transparent;border-bottom:190px solid #092b4a;opacity:.9}
+.m1{left:5%}.m2{right:2%;border-left-width:220px;border-right-width:220px;border-bottom-width:230px}
+.ground{position:absolute;left:0;right:0;bottom:0;height:35%;background:linear-gradient(#145079,#092944)}
+.lamp{position:absolute;bottom:31%;font-size:48px;filter:drop-shadow(0 0 12px #aee5ff)}
+.l1{left:12%}.l2{right:13%}
+.path{position:absolute;bottom:-8%;left:20%;width:60%;height:40%;border-radius:50% 50% 0 0;background:#164667;border:1px solid #2c6d91}
+#village{display:none}.house{position:absolute;bottom:30%;font-size:90px;left:4%;filter:drop-shadow(0 12px 7px #06192b)}
+.tree{position:absolute;bottom:29%;font-size:75px}.tr1{left:5%}.tr2{right:4%}.tr3{left:29%;bottom:32%;font-size:54px}
+.rain{position:absolute;inset:0;display:none;background-image:linear-gradient(110deg,transparent 48%,#bde8ff99 49%,transparent 51%);background-size:16px 30px;animation:rain .35s linear infinite;opacity:.6}
+@keyframes rain{to{background-position:16px 30px}}
+#sun{display:none;position:absolute;top:8%;left:10%;width:85px;height:85px;border-radius:50%;background:#fff3a8;box-shadow:0 0 60px #ffe789}
+.char{position:absolute;bottom:29%;width:78px;height:132px;z-index:10;transition:left .08s linear,transform .12s}
+.head{position:absolute;left:20px;top:2px;width:38px;height:38px;border-radius:50%;background:#efc19d;border:2px solid #5b3028}
+.eye{position:absolute;top:14px;width:5px;height:7px;border-radius:50%;background:#1b1b1b}.e1{left:10px}.e2{left:23px}
+.hair{position:absolute;z-index:2;left:12px;top:-5px;width:54px;height:30px;border-radius:30px 30px 12px 12px;background:#1d1720}
+.body{position:absolute;top:38px;left:11px;width:56px;height:59px;border-radius:20px 20px 10px 10px}
+.arm{position:absolute;top:47px;width:11px;height:43px;border-radius:8px;background:#efc19d;transform-origin:top}
+.a1{left:5px}.a2{right:5px}
+.leg{position:absolute;top:94px;width:14px;height:38px;border-radius:8px;background:#17243a;transform-origin:top}
+.g1{left:19px}.g2{left:45px}
+.nori .body{background:#d8ecff}.nori .hair{background:#161a25}
+.nori .leg{background:#152038}
+.nazihe .body{background:#d78fbd}.nazihe .hair{background:#321b29;height:38px}
+.nazihe .leg{background:#34214a}
+.walk .g1{animation:walk1 .16s infinite alternate}.walk .g2{animation:walk2 .16s infinite alternate}
+.walk .a1{animation:arm1 .16s infinite alternate}.walk .a2{animation:arm2 .16s infinite alternate}
+@keyframes walk1{to{transform:rotate(25deg)}}@keyframes walk2{to{transform:rotate(-25deg)}}
+@keyframes arm1{to{transform:rotate(-18deg)}}@keyframes arm2{to{transform:rotate(18deg)}}
+#hud{position:absolute;top:10px;left:10px;right:10px;z-index:30;display:flex;gap:7px;justify-content:space-between;align-items:center}
+.badge{padding:8px 11px;background:#03132bd9;border:1px solid #68bfff;border-radius:14px;font-size:12px;backdrop-filter:blur(5px)}
+#progress{width:110px;height:7px;border-radius:10px;background:#173b5b;overflow:hidden;margin-top:4px}
+#bar{height:100%;width:0;background:#8ed5ff;transition:width .4s}
+#dialog{position:absolute;z-index:40;left:4%;right:4%;bottom:11%;display:none;padding:15px 17px;background:#031329ee;border:2px solid #75caff;border-radius:21px;box-shadow:0 12px 35px #0009}
+#speaker{color:#9dddff;font-weight:bold;font-size:16px}#line{font-size:15px;line-height:1.8;margin-top:5px}
+#next{margin-top:7px;border:0;border-radius:11px;padding:8px 15px;background:#4baef2;color:#fff;font-weight:bold}
+#controls{position:absolute;bottom:10px;left:10px;right:10px;z-index:45;display:flex;justify-content:space-between;pointer-events:none}
+.group{display:flex;gap:7px}.ctrl{pointer-events:auto;width:58px;height:58px;border-radius:50%;border:1px solid #8bd6ff;background:#05264ae8;color:#fff;font-size:23px}
+#hint{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:25;white-space:nowrap;background:#031329cc;border:1px solid #4d91be;border-radius:15px;padding:7px 12px;font-size:12px;opacity:0;transition:.3s}
+#menu{position:absolute;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(#031436ed,#0a3c70f0)}
+.card{width:min(93%,560px);max-height:90vh;overflow:auto;padding:25px;border-radius:28px;background:#03152eea;border:2px solid #6ec8ff;box-shadow:0 25px 80px #000a}
+.logo{font-size:50px}.card h1{font-size:29px;margin:5px 0 8px;color:#c8ebff}.card p{line-height:1.8;color:#e4f6ff}
+.start{border:0;border-radius:17px;padding:13px 24px;font-size:17px;font-weight:bold;color:#fff;background:#4aaef3}
+#choice{display:none;position:absolute;inset:0;z-index:80;background:#031329e8;align-items:center;justify-content:center}
+.choices{width:min(92%,500px);background:#062044;border:2px solid #69c6ff;border-radius:24px;padding:20px;text-align:center}
+.choice{display:block;width:100%;margin:9px 0;padding:12px;border:1px solid #61b8ed;border-radius:13px;background:#0b4774;color:white}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="world">
+<div class="stars"></div><div class="moon"></div><div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="mountain m1"></div><div class="mountain m2"></div><div id="sun"></div>
+<div class="ground"></div><div class="path"></div>
+<div class="tree tr1">🌲</div><div class="tree tr2">🌲</div><div class="tree tr3">🌳</div>
+<div class="lamp l1">🏮</div><div class="lamp l2">🏮</div><div class="house">🏠</div><div class="rain"></div>
+<div id="nazihe" class="char nazihe" style="left:70%">
+<div class="hair"></div><div class="head"><i class="eye e1"></i><i class="eye e2"></i></div><div class="body"></div><div class="arm a1"></div><div class="arm a2"></div><div class="leg g1"></div><div class="leg g2"></div></div>
+<div id="nori" class="char nori" style="left:12%">
+<div class="hair"></div><div class="head"><i class="eye e1"></i><i class="eye e2"></i></div><div class="body"></div><div class="arm a1"></div><div class="arm a2"></div><div class="leg g1"></div><div class="leg g2"></div></div>
+</div>
+
+<div id="hud">
+<div class="badge">💙 قرب نزيهة: <span id="love">0</span>%<div id="progress"><div id="bar"></div></div></div>
+<div class="badge">📖 المرحلة <span id="stage">1</span>/30</div>
+</div>
+<div id="hint"></div>
+<div id="dialog"><div id="speaker"></div><div id="line"></div><button id="next">متابعة ✨</button></div>
+<div id="choice"><div class="choices"><h3 id="ctitle">اختيار</h3><p>ماذا سيفعل نوري؟</p><button class="choice" data-v="kind">يجلس بجانبها بهدوء 💙</button><button class="choice" data-v="joke">يحاول إضحاكها 🌸</button></div></div>
+<div id="controls"><div class="group"><button class="ctrl" id="L">◀</button><button class="ctrl" id="R">▶</button></div><div class="group"><button class="ctrl" id="A">💙</button></div></div>
+
+<div id="menu"><div class="card">
+<div class="logo">🌙💙✨</div><h1>حين وجد نوري نزيهة</h1>
+<p>قصة تفاعلية طويلة عن نزيهة، فتاة وحيدة، ونوري الذي يجدها تحت السماء الزرقاء ويحاول أن يجعل أيامها أجمل.</p>
+<p>🎮 حرّك نوري بالأسهم أو أزرار الهاتف.<br>💙 اقترب من نزيهة واضغط القلب للتفاعل.<br>🌸 اختياراتك تغيّر بعض الحوار.</p>
+<button class="start" id="start">ابدأ الرحلة ✨</button>
+</div></div>
+</div>
+<script>
+const nori=document.querySelector('#nori'), nazihe=document.querySelector('#nazihe'), world=document.querySelector('#world');
+const rain=document.querySelector('.rain'), sun=document.querySelector('#sun'), dialog=document.querySelector('#dialog');
+const speaker=document.querySelector('#speaker'), line=document.querySelector('#line'), stageEl=document.querySelector('#stage');
+const loveEl=document.querySelector('#love'),bar=document.querySelector('#bar'), hint=document.querySelector('#hint');
+let x=12, stage=1, started=false, busy=false, choiceStage=false, keys={};
+let love=0;
+const scenes=[
+["نوري","لم أتوقع أن أجد أحدًا هنا في هذا الوقت..."],
+["نزيهة","أنا نزيهة. أحيانًا أحب أن أبقى وحدي عندما يصبح كل شيء هادئًا."],
+["نوري","لكن الوحدة لا يجب أن تعني أنكِ وحيدة فعلًا."],
+["نزيهة","وماذا تعرف عن الوحدة يا نوري؟"],
+["نوري","أعرف أنها تصبح أخف عندما تجد شخصًا يستمع إليك دون أن يحكم عليك."],
+["نزيهة","أنت تستمع إليّ فعلًا... وهذا غريب وجميل في الوقت نفسه."],
+["نوري","لن أطلب منك أن تتغيري. فقط اسمحي لي أن أكون بجانبك قليلًا."],
+["نزيهة","حسنًا... اجلس هنا."],
+["نوري","السماء جميلة الليلة."],
+["نزيهة","أجمل مما كانت عليه بالأمس... ربما لأنني لست وحدي."],
+["نوري","إذن سأحاول أن أجعل الغد أجمل أيضًا."],
+["نزيهة","هل تعدني؟"],
+["نوري","أعدك أن أعود ما دمتِ تريدين وجودي."],
+["نزيهة","أظن أنني بدأت أنتظر خطواتك قبل أن تصل."],
+["نوري","وهذا يجعلني سعيدًا أكثر مما تتخيلين."],
+["نزيهة","كنت أخاف من الغد... الآن أشعر بالفضول لأراه."],
+["نوري","سنراه معًا، يومًا بعد يوم."],
+["نزيهة","شكرًا لأنك لم تمر بجانبي وكأنني غير موجودة."],
+["نوري","أنتِ لستِ غير موجودة يا نزيهة. أنتِ شخص يستحق أن يُرى ويُسمع."],
+["نزيهة","كلماتك تجعل قلبي أهدأ."],
+["نوري","إذن دعينا نمشي قليلًا."],
+["نزيهة","معك؟"],
+["نوري","معي. ولن نستعجل."],
+["نزيهة","انظر! بدأت السماء تمطر."],
+["نوري","تعالي، لنبحث عن مكان نحتمي فيه."],
+["نزيهة","حتى المطر أصبح ذكرى جميلة."],
+["نوري","لأننا عشناها معًا."],
+["نزيهة","هل تعرف ما الذي تغيّر؟"],
+["نوري","ماذا؟"],
+["نزيهة","لم تعد الوحدة تخيفني كما كانت."],
+["نوري","وهذه أجمل هدية يمكن أن تعطيني إياها."]
+];
+function pos(){nori.style.left=x+'%'; let d=Math.abs(x-parseFloat(nazihe.style.left));let v=Math.max(0,Math.min(100,100-d*5));love=Math.round(v);loveEl.textContent=love;bar.style.width=love+'%';}
+function walk(on){nori.classList.toggle('walk',on)}
+function move(dir){
+ if(!started||busy)return;
+ x=Math.max(3,Math.min(88,x+dir*1.35));pos();walk(true);clearTimeout(window.w);window.w=setTimeout(()=>walk(false),180);
+}
+function show(w,t){speaker.textContent=w;line.textContent=t;dialog.style.display='block'}
+function hide(){dialog.style.display='none'}
+function heart(){
+ for(let i=0;i<3;i++){let e=document.createElement('div');e.textContent='💙';e.style.position='absolute';e.style.left=(x+2+Math.random()*4)+'%';e.style.bottom=(38+Math.random()*8)+'%';e.style.zIndex=60;e.style.fontSize='22px';e.style.transition='1.4s';world.appendChild(e);setTimeout(()=>e.style.transform='translateY(-90px)',30);setTimeout(()=>e.remove(),1450)}
+}
+function advance(){
+ if(!started||busy)return;
+ let d=Math.abs(x-parseFloat(nazihe.style.left));
+ if(d>10){show("نوري","اقترب من نزيهة أكثر... أريد أن أتحدث معها. 💙");return}
+ if(stage>30){show("نزيهة","هذه ليست النهاية... الحكايات الجميلة لا تحتاج إلى نهاية. 💙");heart();return}
+ if(stage===8||stage===16||stage===24){
+   busy=true;document.querySelector('#choice').style.display='flex';return;
+ }
+ const s=scenes[stage-1];show(s[0],s[1]);heart();
+ if(stage===24){rain.style.display='block';world.style.background='linear-gradient(#172c55,#245f88 65%,#123a59 66%,#08233f 100%)'}
+ if(stage===25){rain.style.display='none';sun.style.display='block';world.style.background='linear-gradient(#497db1,#82bdd8 65%,#34708d 66%,#143d52 100%)'}
+ stage++;stageEl.textContent=stage<=30?stage:30;
+}
+document.querySelector('#start').onclick=()=>{document.querySelector('#menu').style.display='none';started=true;show("نوري","من هذه الفتاة الجالسة وحدها؟ سأقترب منها وأسألها إن كانت بخير.");}
+document.querySelector('#next').onclick=()=>hide();
+document.querySelector('#A').onclick=advance;
+document.querySelector('#L').onpointerdown=()=>move(-1);document.querySelector('#R').onpointerdown=()=>move(1);
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{
+ document.querySelector('#choice').style.display='none';busy=false;
+ if(b.dataset.v==='kind'){show("نوري","لن أزعجك. سأجلس هنا فقط، وإذا أردتِ الكلام سأستمع.");love=Math.min(100,love+8)}
+ else{show("نوري","أتعلمين؟ لدي نكتة سيئة جدًا... لكن ربما تستحق المحاولة. 😄");love=Math.min(100,love+12)}
+ loveEl.textContent=love;bar.style.width=love+'%';heart();stage++;stageEl.textContent=stage;
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')move(-1);
+ if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')move(1);
+ if(e.key===' '||e.key==='Enter')advance();
+});
+let touchX=null;
+document.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{if(touchX===null)return;let dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>35)move(dx>0?1:-1);touchX=null},{passive:true});
+setInterval(()=>{
+ if(!started)return;
+ let nx=parseFloat(nazihe.style.left);
+ if(Math.random()<.35 && Math.abs(x-nx)<14)nazihe.style.transform='translateY(-3px)';
+ else nazihe.style.transform='';
+},500);
+pos();
+</script>
+</body>
+</html>
