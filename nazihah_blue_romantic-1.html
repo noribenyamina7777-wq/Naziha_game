@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إلى نزيهة 💙</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Trebuchet MS",Arial,sans-serif}
+body{
+color:#fff;overflow-x:hidden;
+background:
+radial-gradient(circle at 20% 15%,rgba(92,190,255,.38),transparent 28%),
+radial-gradient(circle at 80% 30%,rgba(45,107,255,.35),transparent 30%),
+linear-gradient(145deg,#020b24,#063b87 48%,#021431);
+}
+canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:2;max-width:900px;margin:auto;padding:35px 18px 70px}
+.hero{
+min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+text-align:center
+}
+.moon{
+width:145px;height:145px;border-radius:50%;
+background:radial-gradient(circle at 35% 30%,#fff,#bce8ff 45%,#6dbdff 70%,#2878db);
+box-shadow:0 0 35px #7ed4ff,0 0 100px rgba(72,169,255,.65);
+animation:float 4s ease-in-out infinite
+}
+@keyframes float{50%{transform:translateY(-12px)}}
+h1{font-size:clamp(42px,10vw,78px);margin:28px 0 8px;text-shadow:0 0 30px #70caff}
+.subtitle{font-size:21px;opacity:.9;line-height:1.9;max-width:680px}
+.glow{
+margin-top:28px;padding:15px 30px;border:1px solid rgba(255,255,255,.45);
+border-radius:50px;background:rgba(255,255,255,.12);color:white;font-size:18px;
+box-shadow:0 0 25px rgba(75,190,255,.35);cursor:pointer
+}
+section{
+margin:35px 0;padding:35px 25px;border-radius:32px;
+background:linear-gradient(145deg,rgba(12,77,158,.55),rgba(1,23,59,.62));
+border:1px solid rgba(160,225,255,.25);
+box-shadow:0 20px 60px rgba(0,0,0,.25),inset 0 0 35px rgba(90,190,255,.08);
+backdrop-filter:blur(12px)
+}
+h2{text-align:center;color:#d9f4ff;font-size:30px;margin-top:0}
+p{font-size:19px;line-height:2.15;color:#edf9ff;margin:18px 0}
+.highlight{
+text-align:center;font-size:25px!important;color:#bdeaff;
+text-shadow:0 0 18px rgba(106,210,255,.7)
+}
+.card{
+padding:22px;margin:20px 0;border-radius:24px;
+background:rgba(0,30,78,.42);border-right:3px solid #66caff
+}
+.card strong{color:#9edfff}
+footer{text-align:center;padding:45px 10px;font-size:20px;color:#bfeaff}
+.heart{font-size:60px;text-align:center;animation:beat 1.2s infinite}
+@keyframes beat{50%{transform:scale(1.18)}}
+.reveal{opacity:0;transform:translateY(25px);transition:1s}
+.reveal.show{opacity:1;transform:none}
+#start{transition:.6s}
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas>
+<div class="wrap">
+
+<div class="hero" id="start">
+<div class="moon"></div>
+<h1>نزيهة 💙</h1>
+<div class="subtitle">
+هذه ليست مجرد صفحة على الإنترنت...<br>
+إنها مجموعة كلمات صنعتها لكِ، لأنكِ تستحقين أن تسمعي الكلام الجميل.
+</div>
+<button class="glow" onclick="begin()">افتحي رسالتي لكِ ✨</button>
+</div>
+
+<div id="content" style="display:none">
+
+<section class="reveal">
+<div class="heart">💙</div>
+<h2>إلى نزيهة، صاحبة الابتسامة التي أحب أن أراها</h2>
+<p>
+نزيهة... أردت اليوم أن أصنع لكِ شيئًا مختلفًا، شيئًا لا ينتهي بمجرد قراءته.
+أردت أن يكون أمامكِ مكان صغير يحمل اسمكِ، وتجدين فيه كلمات كثيرة تشبه الأشياء
+الجميلة التي أتمنى أن تشعري بها.
+</p>
+<p>
+لا أعرف إن كانت الكلمات تستطيع فعلًا أن تشرح كل ما يوجد في القلب، لكنني أعرف
+أنني عندما فكرت فيكِ، لم أجد أجمل من اللون الأزرق لأضع خلفية لهذه الرسالة؛
+لون يشبه هدوء السماء، وعمق البحر، والليل الذي يصبح أجمل عندما تلمع فيه النجوم.
+</p>
+</section>
+
+<section class="reveal">
+<h2>لو كان بإمكاني أن أهديكِ شيئًا واحدًا...</h2>
+<p class="highlight">
+لأهديتكِ راحة لا تنتهي، وابتسامة لا تختفي، وأيامًا لا تجدين فيها سببًا للحزن. 💙
+</p>
+<div class="card">
+<p>
+أتمنى أن تعرفي أنكِ لستِ بحاجة إلى أن تكوني مثالية حتى تكوني مميزة.
+كوني أنتِ فقط؛ بعفويتكِ، بضحكتكِ، بطريقة كلامكِ، وحتى بالأيام التي لا تكونين
+فيها بأفضل حال. الأشياء الجميلة لا تحتاج إلى الكمال حتى تكون جميلة.
+</p>
+</div>
+<div class="card">
+<p>
+ولو جاء يوم شعرتِ فيه أن كل شيء أصبح ثقيلًا، أتمنى أن تتذكري هذه الصفحة،
+وتتذكري أن هناك من يتمنى لكِ الخير من قلبه، ويريد أن يراكِ تبتسمين قبل أي شيء.
+</p>
+</div>
+</section>
+
+<section class="reveal">
+<h2>كلام لم أقله لكِ بما يكفي 🌙</h2>
+<p>
+أنتِ من الأشخاص الذين يمكن لتفصيل صغير منهم أن يغيّر مزاج يوم كامل.
+رسالة منكِ، كلمة بسيطة، أو حتى ابتسامة... أشياء تبدو صغيرة لكنها قد تحمل
+معنى كبيرًا عند شخص يهتم.
+</p>
+<p>
+وأجمل شيء فيكِ ليس شيئًا واحدًا يمكن وصفه؛ ربما هو اجتماع أشياء كثيرة:
+روحكِ، أسلوبكِ، حضوركِ، وطريقتكِ الخاصة التي تجعلكِ أنتِ.
+ولهذا لا أريد أن أقول لكِ فقط "أنتِ جميلة"، بل أريد أن أقول:
+<strong>وجودكِ بحد ذاته له قيمة.</strong>
+</p>
+<p>
+لا أريد لهذه الكلمات أن تكون مجرد كلام رومانسي يقرأ وينتهي.
+أريدها أن تكون تذكيرًا صغيرًا لكِ: عندما تشكين في نفسكِ يومًا،
+اقرئيها وتذكري أنكِ تستحقين أن تسمعي كلامًا جميلًا، وأن تعيشي لحظات جميلة،
+وأن تكون حولكِ أشياء تجعل قلبكِ مطمئنًا.
+</p>
+</section>
+
+<section class="reveal">
+<h2>ولو استطعت أن أصفكِ بالسماء... ✨</h2>
+<p>
+سأختار لكِ سماءً زرقاء واسعة، وفيها نجمة لا تشبه بقية النجوم.
+ليس لأنها أعلى منها، ولا لأنها أكثر لمعانًا، بل لأنها ببساطة مختلفة.
+وهكذا أراكِ أنتِ؛ لا أبحث عن تشبيه يجعلكِ مثل شخص آخر،
+لأن أجمل ما فيكِ أنكِ لكِ طريقتكِ الخاصة.
+</p>
+<p class="highlight">
+نزيهة، أتمنى أن تظلي دائمًا قريبة من الأشياء التي تجعل قلبكِ سعيدًا. 💙
+</p>
+</section>
+
+<section class="reveal">
+<h2>رسالة أخيرة لكِ 💌</h2>
+<p>
+إذا وصلتِ إلى هنا، فاعلمي أنني لم أصنع كل هذه التفاصيل عبثًا.
+جلست وفكرت: ماذا يمكن أن يصنع ابتسامة على وجه نزيهة؟
+فوجدت أنني أستطيع أن أصنع لكِ عالمًا صغيرًا من اللون الأزرق،
+وأضع فيه بعض النجوم، وقليلًا من الضوء، وكلمات كثيرة من القلب.
+</p>
+<p>
+قد لا تكون هذه أجمل هدية في العالم، لكنها صُنعت بفكرة بسيطة:
+<strong>أن أراكِ سعيدة ولو للحظات.</strong>
+</p>
+<p>
+أتمنى أن تحمل لكِ الأيام القادمة أشياء أجمل مما تتوقعين،
+وأن تجدين دائمًا سببًا جديدًا للابتسام،
+وأن لا تنسي أبدًا أنكِ شخص يستحق التقدير والاهتمام والكلام الجميل.
+</p>
+<p class="highlight">
+ابتسمي يا نزيهة... لأن ابتسامتكِ أجمل شيء يمكن أن تنتهي به هذه الرسالة. 💙✨
+</p>
+<div class="heart">🩵</div>
+</section>
+
+<footer>
+صُنعت لنزيهة بكل الود 💙<br>
+<span style="opacity:.7">من شخص أراد فقط أن يصنع لكِ لحظة جميلة.</span>
+</footer>
+</div>
+</div>
+
+<script>
+const c=document.getElementById("sky"),x=c.getContext("2d");
+let w,h,stars=[];
+function resize(){
+ w=c.width=innerWidth;h=c.height=innerHeight;
+ stars=Array.from({length:150},()=>({x:Math.random()*w,y:Math.random()*h,
+ r:Math.random()*1.8+.3,a:Math.random(),s:Math.random()*.02+.004}));
+}
+function draw(){
+ x.clearRect(0,0,w,h);
+ stars.forEach(s=>{
+  s.a+=s.s;if(s.a>1||s.a<.15)s.s*=-1;
+  x.globalAlpha=s.a;x.fillStyle="#dff7ff";x.beginPath();
+  x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fill();
+ });
+ requestAnimationFrame(draw);
+}
+resize();addEventListener("resize",resize);draw();
+
+function begin(){
+ document.getElementById("start").style.display="none";
+ document.getElementById("content").style.display="block";
+ setTimeout(()=>document.querySelectorAll(".reveal").forEach((e,i)=>
+   setTimeout(()=>e.classList.add("show"),i*350)),100);
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
