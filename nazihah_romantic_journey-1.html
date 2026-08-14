@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إلى نزيهة — رحلة حب 💙</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:#f4fbff;font-family:Tahoma,Arial,sans-serif;background:#020b25;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 50% 5%,#198de4,transparent 35%),linear-gradient(#052d6c,#03183d 55%,#010718)}
+body:after{content:"";position:fixed;inset:0;z-index:-2;background-image:radial-gradient(#d9f8ff 1px,transparent 1px);background-size:55px 55px;opacity:.18;animation:sky 18s linear infinite}
+@keyframes sky{to{background-position:55px 55px}}
+#bar{position:fixed;top:0;right:0;height:4px;background:#b8f1ff;width:0;z-index:99;box-shadow:0 0 15px #75dfff}
+main{max-width:850px;margin:auto;padding:15px}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center}
+.panel{width:100%;padding:28px 20px;border-radius:30px;background:rgba(1,22,59,.78);border:1px solid rgba(160,231,255,.25);box-shadow:0 20px 70px #0008, inset 0 0 50px #48baff0c;backdrop-filter:blur(10px)}
+.moon{width:140px;height:140px;border-radius:50%;margin:auto;background:radial-gradient(circle at 30% 25%,#fff,#bcefff 48%,#54a9ec);box-shadow:0 0 35px #b9f1ff,0 0 100px #35a9ff88;animation:float 4s infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+h1{font-size:clamp(42px,11vw,75px);margin:20px 0;text-shadow:0 0 25px #6bdcff}
+h2{font-size:30px;color:#c9f5ff}h3{color:#a9eaff}
+p{font-size:18px;line-height:2}
+.quote{font-size:24px;color:#c9f3ff}
+button{border:1px solid #7adfff66;background:#1678bd55;color:white;padding:13px 20px;margin:7px;border-radius:999px;font-size:16px;cursor:pointer;transition:.2s}
+button:hover{transform:translateY(-3px);background:#279ce077}
+.primary{background:#e9fbff;color:#063b75;box-shadow:0 0 25px #65d5ff77}
+.stage{margin:35px 0;padding:28px 20px;border-radius:28px;background:#021b4fcc;border:1px solid #7edfff33;box-shadow:0 15px 50px #0005}
+.choice{display:flex;flex-wrap:wrap;justify-content:center}
+.result{min-height:30px;color:#bdefff;margin-top:14px}
+.hidden{display:none}
+.heart{font-size:70px;animation:beat 1s infinite}
+@keyframes beat{50%{transform:scale(1.18)}}
+.letter{background:#dff7ff0d;border:1px solid #b8efff33;border-radius:22px;padding:22px;text-align:right}
+.progress{height:12px;background:#ffffff12;border-radius:20px;overflow:hidden;margin:20px 0}
+.progress i{display:block;height:100%;width:0;background:#8de5ff;box-shadow:0 0 15px #65d7ff;transition:.4s}
+input[type=text]{width:90%;padding:15px;border-radius:20px;border:1px solid #72dcff;background:#001737aa;color:white;font-size:17px;text-align:center}
+.envelope{font-size:75px;cursor:pointer;transition:.3s}.envelope:hover{transform:scale(1.1)}
+.memory{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:550px;margin:auto}
+.card{height:80px;border-radius:18px;border:1px solid #66d8ff;background:#0b5c9b;color:transparent;font-size:28px}
+.card.show{color:white;background:#124b83}.card.matched{color:white;background:#167f9c}
+.timeline{text-align:right;border-right:2px solid #65d9ff;padding-right:20px}
+.timeline div{margin:25px 0}
+.bigmsg{font-size:25px;color:#d2f7ff;line-height:2.2}
+footer{text-align:center;padding:70px 10px}
+@media(max-width:600px){.memory{grid-template-columns:repeat(3,1fr)}.card{height:72px}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<main>
+
+<section class="screen" id="start">
+<div class="panel">
+<div class="moon"></div>
+<h1>إلى نزيهة 💙</h1>
+<p class="quote">هذه المرة... لم أصنع لكِ لعبة فقط.<br>صنعت لكِ رحلة طويلة مليئة بالحب.</p>
+<p>رحلة سهلة جدًا، لا تحتاج إلى مهارة أو سرعة. فقط اضغطي واختاري واقرئي، ودعي كل مرحلة تأخذكِ إلى الرسالة التي بعدها. 🌙</p>
+<button class="primary" onclick="begin()">ابدئي الرحلة 💌</button>
+</div>
+</section>
+
+<div id="game" class="hidden">
+
+<section class="stage">
+<h2>💙 المرحلة 1 — أول باب</h2>
+<p>قبل أن تبدأ الرحلة، اختاري الباب الذي يجذبكِ.</p>
+<div class="choice">
+<button onclick="r(1,'الباب الأزرق')">الباب الأزرق 💙</button>
+<button onclick="r(1,'باب النجوم')">باب النجوم ✨</button>
+<button onclick="r(1,'باب القمر')">باب القمر 🌙</button>
+</div>
+<div class="result" id="r1"></div>
+</section>
+
+<section class="stage">
+<h2>🌷 المرحلة 2 — لو كنتِ وردة</h2>
+<p>أي وصف يشبهكِ أكثر؟</p>
+<div class="choice">
+<button onclick="r(2,'الوردة الهادئة')">الهادئة 🌷</button>
+<button onclick="r(2,'الوردة المضيئة')">المضيئة ✨</button>
+<button onclick="r(2,'الوردة النادرة')">النادرة 💎</button>
+</div>
+<div class="result" id="r2"></div>
+</section>
+
+<section class="stage">
+<h2>💌 المرحلة 3 — رسالة صغيرة</h2>
+<p>اضغطي على الظرف لفتح أول رسالة.</p>
+<div class="envelope" onclick="openLetter()">💌</div>
+<div class="result" id="letter1"></div>
+</section>
+
+<section class="stage">
+<h2>🌙 المرحلة 4 — اختاري أمنية</h2>
+<p>كل اختيار سيحوّل إلى رسالة جميلة.</p>
+<div class="choice">
+<button onclick="r(4,'أن يكون قلبك مرتاحًا')">راحة القلب 🤍</button>
+<button onclick="r(4,'أن تتحقق أحلامك')">تحقيق الأحلام 🌟</button>
+<button onclick="r(4,'أن تظل ابتسامتك حاضرة')">ابتسامة دائمة 😊</button>
+</div>
+<div class="result" id="r4"></div>
+</section>
+
+<section class="stage">
+<h2>🧩 المرحلة 5 — لعبة الذاكرة السهلة</h2>
+<p>افتحي البطاقات وابحثي عن الأزواج. لا يوجد وقت محدد.</p>
+<div class="memory" id="memory"></div>
+<div class="result" id="memResult">الأزواج: 0 / 6</div>
+</section>
+
+<section class="stage">
+<h2>🩵 المرحلة 6 — كلمة منكِ</h2>
+<p>اكتبي أي كلمة تريدينها، حتى لو كانت بسيطة.</p>
+<input id="word" type="text" placeholder="مثلاً: ابتسامة">
+<br><button onclick="saveWord()">أكمل 💙</button>
+<div class="result" id="r6"></div>
+</section>
+
+<section class="stage">
+<h2>✨ المرحلة 7 — لو كنتِ نجمة</h2>
+<p>أي مكان تختارين لنجمـتكِ؟</p>
+<div class="choice">
+<button onclick="r(7,'فوق البحر')">فوق البحر 🌊</button>
+<button onclick="r(7,'فوق الجبال')">فوق الجبال ⛰️</button>
+<button onclick="r(7,'وسط السماء')">وسط السماء 🌌</button>
+</div>
+<div class="result" id="r7"></div>
+</section>
+
+<section class="stage">
+<h2>💙 المرحلة 8 — اختاري لون الحب</h2>
+<p>كلها درجات من الأزرق، لكن لكل واحدة شعور مختلف.</p>
+<div class="choice">
+<button onclick="blue('ليلي')">أزرق ليلي 🌌</button>
+<button onclick="blue('بحري')">أزرق بحري 🌊</button>
+<button onclick="blue('سماوي')">أزرق سماوي ☁️</button>
+</div>
+<div class="result" id="r8"></div>
+</section>
+
+<section class="stage">
+<h2>🕊️ المرحلة 9 — دقيقة هدوء</h2>
+<p class="bigmsg">خذي نفسًا هادئًا...<br>ولا تفكري في شيء لدقيقة.<br>هذه المساحة لكِ فقط.</p>
+<button onclick="r(9,'لحظة هدوء')">أنا هنا 🤍</button>
+<div class="result" id="r9"></div>
+</section>
+
+<section class="stage">
+<h2>🌟 المرحلة 10 — نجوم الرسائل</h2>
+<p>اضغطي على كل نجمة لتظهر لكِ رسالة.</p>
+<div class="choice">
+<button onclick="star(1)">⭐</button><button onclick="star(2)">⭐</button><button onclick="star(3)">⭐</button>
+<button onclick="star(4)">⭐</button><button onclick="star(5)">⭐</button><button onclick="star(6)">⭐</button>
+</div>
+<div class="result" id="starsMsg">النجوم المفتوحة: 0 / 6</div>
+</section>
+
+<section class="stage">
+<h2>🕰️ المرحلة 11 — حكاية صغيرة</h2>
+<div class="timeline">
+<div><h3>في البداية...</h3><p>كانت هناك فكرة بسيطة: كيف يمكن أن أصنع شيئًا يجعل نزيهة تبتسم؟</p></div>
+<div><h3>ثم...</h3><p>بدأت الألوان والنجوم والرسائل تتجمع، وتحولت الفكرة إلى رحلة.</p></div>
+<div><h3>وبعدها...</h3><p>أصبح لكل مرحلة معنى، حتى لو كانت لعبة بسيطة.</p></div>
+<div><h3>والآن...</h3><p>أنتِ هنا، تقرئين هذه الكلمات، وهذا وحده يجعل الرحلة تستحق أن تُصنع.</p></div>
+</div>
+</section>
+
+<section class="stage">
+<h2>💗 المرحلة 12 — سؤال القلب</h2>
+<p>لو كان بإمكانكِ الاحتفاظ بلحظة جميلة إلى الأبد، أي واحدة تختارين؟</p>
+<div class="choice">
+<button onclick="r(12,'لحظة ضحك')">ضحكة لا تنتهي 😂</button>
+<button onclick="r(12,'لحظة هدوء')">هدوء جميل 🌙</button>
+<button onclick="r(12,'لحظة كلام')">حديث طويل 💬</button>
+<button onclick="r(12,'لحظة تحت السماء')">سماء مليئة بالنجوم 🌌</button>
+</div>
+<div class="result" id="r12"></div>
+</section>
+
+<section class="stage">
+<h2>💎 المرحلة 13 — ثلاث جواهر</h2>
+<p>اختاري جوهرة واحدة.</p>
+<div class="choice">
+<button onclick="gem('الحنان')">💎</button>
+<button onclick="gem('الثقة')">🔷</button>
+<button onclick="gem('الأمل')">💠</button>
+</div>
+<div class="result" id="r13"></div>
+</section>
+
+<section class="stage">
+<h2>🌊 المرحلة 14 — رسالة البحر</h2>
+<p>البحر لا يتكلم، لكنه يترك لكِ رسالة...</p>
+<button onclick="r(14,'رسالة البحر')">اقتربي من البحر 🌊</button>
+<div class="result" id="r14"></div>
+</section>
+
+<section class="stage">
+<h2>🎁 المرحلة 15 — الهدية المخفية</h2>
+<p>اختاري واحدة من الهدايا الثلاث.</p>
+<div class="choice">
+<button onclick="gift(1)">🎁</button><button onclick="gift(2)">🎁</button><button onclick="gift(3)">🎁</button>
+</div>
+<div class="result" id="r15"></div>
+</section>
+
+<section class="stage">
+<h2>💌 المرحلة 16 — رسالة لكِ</h2>
+<div class="letter">
+<p>نزيهة،</p>
+<p>ربما تبدو هذه اللعبة مجرد شاشة زرقاء وأزرار ورسائل، لكنها بالنسبة لي أكثر من ذلك بقليل.</p>
+<p>كل مرة ضغطتِ فيها على زر، كنتِ تنتقلين إلى جزء جديد من الشيء الذي صنعته لكِ. ولهذا جعلتها طويلة؛ لأنني لم أرد أن تكون المفاجأة سريعة وتنتهي في ثوانٍ.</p>
+<p>أردت أن يكون لديكِ وقت لتبتسمي، لتختاري، لتلعبي، ولتقرئي كلمات قيلت لكِ من القلب.</p>
+<p>أريدكِ أن تعرفي شيئًا بسيطًا: أنتِ شخص يستحق الاهتمام، ويستحق أن يجد في يومه شيئًا جميلًا، حتى لو كان صغيرًا جدًا.</p>
+<p>ولو كان بإمكاني أن أضع أمامكِ سماءً كاملة مليئة بالنجوم، لفعلت. لكنني بدل ذلك صنعت هذه السماء الصغيرة، وجعلت لونها أزرق، لأنني أردت لها أن تكون هادئة وفخمة وتشبه الحلم.</p>
+<p>أتمنى أن تكون أيامكِ القادمة أخف، وأن تتحقق الأشياء التي تتمنينها، وأن تبقى ضحكتكِ حاضرة حتى في الأيام التي لا تكون سهلة.</p>
+<p class="quote">ولن أقول إن هذه الكلمات تستطيع وصف كل شيء... لكن أستطيع أن أقول إنها كُتبت خصيصًا لتجعلكِ تشعرين بأنكِ مميزة. 💙</p>
+</div>
+</section>
+
+<section class="stage">
+<h2>🌌 المرحلة 17 — آخر باب</h2>
+<p>لقد اقتربتِ من النهاية. اختاري كلمة واحدة تصف الرحلة.</p>
+<div class="choice">
+<button onclick="last('جميلة')">جميلة 💙</button>
+<button onclick="last('مميزة')">مميزة ✨</button>
+<button onclick="last('رومنسية')">رومنسية 💌</button>
+</div>
+<div class="result" id="r17"></div>
+</section>
+
+<section class="stage">
+<h2>👑 المرحلة 18 — النهاية</h2>
+<p>اضغطي على القلب لفتح النهاية الخاصة.</p>
+<button class="primary" style="font-size:65px;padding:18px 35px" onclick="finish()">💙</button>
+</section>
+</div>
+
+<section class="screen hidden" id="end">
+<div class="panel">
+<div class="heart">💙</div>
+<h1>نزيهة...</h1>
+<p class="quote">وصلتِ إلى النهاية، لكن الكلام الجميل لا ينتهي هنا.</p>
+<p>أتمنى أن تأخذي من هذه الرحلة شيئًا واحدًا فقط:</p>
+<p class="bigmsg">أنكِ تستحقين أن يُفكر بكِ أحد، وأن تُصنع لكِ أشياء جميلة، وأن تجدين في أيامكِ دائمًا سببًا صغيرًا للابتسام. 🌷</p>
+<p>ولو أعدتِ اللعبة مرة أخرى، ربما ستجدين فيها نفس الكلمات... لكن أتمنى أن تشعري بها كل مرة بطريقة أجمل.</p>
+<p class="quote">إلى نزيهة، بكل الود 💙🌙✨</p>
+<button onclick="location.reload()">العودة للرحلة</button>
+</div>
+</section>
+
+<footer>صُنعت هذه الرحلة خصيصًا لنزيهة 💙</footer>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+function begin(){$('start').style.display='none';$('game').classList.remove('hidden');scrollTo(0,0)}
+function r(n,t){$('r'+n).textContent='اختياركِ: '+t+' — أتمنى أن يحمل لكِ هذا الاختيار شعورًا جميلًا. 💙'}
+function openLetter(){$('letter1').textContent='نزيهة، لا تحتاجين إلى سبب كبير حتى تستحقي الفرح. أحيانًا رسالة صغيرة تكفي لتقول: أتمنى أن تكوني بخير دائمًا. 💙'}
+function saveWord(){let x=$('word').value.trim();$('r6').textContent=x?'كلمتكِ "'+x+'" أصبحت جزءًا من الرحلة. ✨':'حتى كلمة واحدة تكفي، اكتبي أي شيء تحبينه.'}
+function blue(x){$('r8').textContent='اخترتِ '+x+'... والسماء أصبحت أجمل لأنكِ اخترتِ لونها. 💙'}
+function gem(x){$('r13').textContent='اخترتِ جوهرة '+x+'. أتمنى أن تبقى '+x+' في حياتكِ دائمًا. ✨'}
+function gift(n){let a=['هدية اليوم: ابتسامة صادقة لكِ. 😊','هدية اليوم: أمنية أن تكون أيامكِ جميلة. 🌷','هدية اليوم: رسالة تقول إنكِ تستحقين الفرح. 💙'];$('r15').textContent=a[n-1]}
+function last(x){$('r17').textContent='إذا كانت الرحلة '+x+' بالنسبة لكِ، فهذا أجمل جواب يمكن أن أحصل عليه. 💙'}
+let opened=0;
+function star(n){let msgs=['ابتسامتكِ تستحق سماء كاملة.','لا تنسي أنكِ أهم من يوم سيئ.','أتمنى أن يكون القادم أجمل.','هناك دائمًا ضوء بعد الليل.','كوني لطيفة مع قلبكِ.','هذه النجمة لكِ وحدكِ.'];$('starsMsg').textContent=msgs[n-1]+'  ⭐  النجوم المفتوحة: '+(++opened)+' / 6'}
+const symbols=['💙','🌙','✨','💌','🌷','🌟'],deck=[...symbols,...symbols].sort(()=>Math.random()-.5),mem=$('memory');
+let first=null,lock=false,pairs=0;
+deck.forEach((v,i)=>{let b=document.createElement('button');b.className='card';b.textContent=v;b.onclick=()=>{if(lock||b.classList.contains('matched')||b===first)return;b.classList.add('show');if(!first){first=b;return}if(first.textContent===b.textContent){first.classList.add('matched');b.classList.add('matched');pairs++;$('memResult').textContent='الأزواج: '+pairs+' / 6';first=null;if(pairs===6)$('memResult').textContent='اكتملت اللعبة! ممتاز يا نزيهة 💙'}else{lock=true;setTimeout(()=>{first.classList.remove('show');b.classList.remove('show');first=null;lock=false},650)}};mem.appendChild(b)});
+onscroll=()=>{let h=document.documentElement.scrollHeight-innerHeight;$('bar').style.width=(scrollY/h*100)+'%'}
+function finish(){$('game').style.display='none';$('end').classList.remove('hidden');scrollTo(0,0);for(let i=0;i<35;i++){let s=document.createElement('span');s.textContent=['💙','✨','🌟','🌷'][Math.floor(Math.random()*4)];s.style.position='fixed';s.style.left=Math.random()*100+'%';s.style.top='70%';s.style.fontSize=20+Math.random()*25+'px';s.style.zIndex=10;s.style.transition='4s';document.body.appendChild(s);requestAnimationFrame(()=>{s.style.transform='translateY(-'+(350+Math.random()*600)+'px)';s.style.opacity=0});setTimeout(()=>s.remove(),4200)}}
+</script>
+</body>
+</html>
